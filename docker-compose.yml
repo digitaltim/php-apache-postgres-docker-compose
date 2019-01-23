@@ -1,8 +1,12 @@
-version: '3.1'
+# Documentation: https://docs.docker.com/compose/compose-file/
+version: '3.3'
+
 services:
   web:
+    container_name: php7.1-apache-container # Specify a custom container name, rather than a generated default name
     build:
-      context: ./docker
+      context: ./docker # builds it using the specified options, in this case using the Dockerfile in the 'docker' directory
+    image: php7.1-apache-image # because 'build' is used, 'image' acts as the specified tag name for the image
     volumes:
       - ./html:/var/www/html
     ports:
@@ -13,7 +17,8 @@ services:
     stdin_open: true
 
   db:
-    image: postgres:11.1
+    container_name: postgres11.1-container # Specify a custom container name, rather than a generated default name
+    image: postgres:11.1 # because build is not used, 'image' specifies the image to start the container from
     ports:
       - "5433:5432"
     environment:
