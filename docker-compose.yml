@@ -19,8 +19,14 @@ services:
   db:
     container_name: postgres11.1-container # Specify a custom container name, rather than a generated default name
     image: postgres:11.1 # because build is not used, 'image' specifies the image to start the container from
+    volumes:
+      - ./data:/var/lib/postgresql/data # adding volume prevents a new volume from being auto created every time containers are run
     ports:
       - "5433:5432"
     environment:
       POSTGRES_PASSWORD: passdb
       POSTGRES_DB: testdb
+
+volumes:
+  html:
+  data:
