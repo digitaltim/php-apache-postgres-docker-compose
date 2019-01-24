@@ -7,10 +7,17 @@
     <title>Test Page</title>
 </head>
 <body>
-    <h1>Test Page</h1>
+    <?php
+        if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+            echo "<h1>The server is running. Try <a href='http://{$_SERVER['HTTP_HOST']}:8080'>HTTP</a></h1>";
+            echo "<h1>The server is running. Try <a href='http://{$_SERVER['SERVER_NAME']}:8080'>HTTP</a></h1>";
+        } else {
+            echo "<h1>The server is running. Try <a href='https://{$_SERVER['HTTP_HOST']}'>HTTPS</a></h1>";
+            echo "<h1>The server is running. Try <a href='https://{$_SERVER['SERVER_NAME']}'>HTTPS</a></h1>";
+        }
+    ?>
     <?php
         phpinfo();
     ?>
-
 </body>
 </html>

@@ -11,6 +11,7 @@ services:
       - ./html:/var/www/html
     ports:
       - "8080:80"
+      - "443:443" # expose HTTPS/SSL default port
     depends_on:
       - db
     tty: true

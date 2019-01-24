@@ -7,4 +7,7 @@ RUN set -x && \
   docker-php-ext-install -j${NPROC} intl && \
   docker-php-ext-install -j${NPROC} pdo_pgsql && \
   docker-php-ext-install -j${NPROC} pdo_mysql && \
-  rm -rf /tmp/pear
+  rm -rf /tmp/pear && \
+  a2ensite default-ssl && \
+  a2enmod ssl 
+  
